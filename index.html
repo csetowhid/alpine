@@ -13,8 +13,57 @@
         <span x-text="hello + ' Something New'"></span>
     </div> -->
 
-    <div x-data="{ visible : true}">
+    <!-- <div x-data="{ visible : true}">
         <div x-show="visible">Show Content</div>
+    </div>
+
+    <div x-data="{ records : [0,1,2,3,4,5]}">
+        <div x-show="records.length > 2">Greater Than</div>
+    </div>
+
+
+    <div x-data="{ show : false}">
+        <button x-on:click="show = true">Show</button>
+        <div x-show="show">Content</div>
+    </div> <br>
+
+    <div x-data="{ toggle : false}">
+        <button x-on:click="toggle = !toggle">Toggle</button>
+        <div x-show="toggle">Content</div>
+    </div> -->
+
+    <!-- <div x-data="{ number: 0 }">
+        <button x-on:click="number++">Increment</button>
+        <div x-text="number"></div>
+        <div x-show="number >= 10">
+            Thats a Big Number
+        </div>
+    </div> -->
+
+    <!-- <div x-data="{ name: '' }">
+        <input type="text" x-model="name">
+        <span x-text="name.length"></span>
+    </div> -->
+
+    <!-- <form x-data="{ name:''}" x-on:submit.prevent="console.log(name)"> -->
+    <!-- <form x-data="{ name:''}" x-on:submit="$event.preventDefault(); console.log(name)"> -->
+        <!-- <input type="text" x-model="name">
+        <button type="submit">Submit</button>
+    </form> -->
+
+    <div 
+    x-data="{ 
+        name: '',
+
+        makeNameUpperCase () {
+            this.name = this.name.toUpperCase()
+        }
+    
+    }"
+    >
+        <input type="text" x-model="name">
+        <span x-text="name"></span>
+        <button x-on:click="makeNameUpperCase">Uppercase</button>
     </div>
 
 </body>
