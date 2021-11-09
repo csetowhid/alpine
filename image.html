@@ -9,6 +9,29 @@
     
 </head>
 <body>
+    <div 
+
+    x-data="{
+        query : '',
+        img: '',
+
+        getImage(){
+            this.img = `https://unsplash.com/photos/HFXvViocH6M/?${this.query}`
+        }
+    }"
+    >
+    <form 
+    x-on:submit.prevent="getImage">
+
+        <input type="text" x-model="query">
+        <button type="submit">Search</button>
+    </form>
     
+    <div x-show="img">
+        <img x-bind:src="img" style="width: 500px;">
+    </div>
+
+        
+</div>
 </body>
 </html>
