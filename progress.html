@@ -6,77 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>Document</title>
-    <!-- <style>
-        .bold{
-        font-weight: bold
+    <style>
+        .progress{
+        height: 10px;
+        width: 300px;
+        background-color: #ccc;
     }
-    .blue{
-        color: blue;
+    .progress-inner{
+        height: 10px;
+        background-color: slategray;
     }
-    </style> -->
+    </style>
 </head>
 <body>
-    <!-- <div x-data>
-        <span class="blue" x-bind:class="{ 'bold' : false }">
-            Am I Bold?
-        </span>
+    <div x-data="{ 
+        progress: 0,
+        increment(){
+            this.progress++
+        },
+        
+        init() {
+            let interval = setInterval(() => {
+                if (this.progress >= 100){
+                    clearInterval(interval);
+                }
+                this.increment()
+            },100)
+        }
+    }">
+    <div class="progress">
+        <div class="progress-inner" x-bind:style="`width: ${progress}%;`"></div>
     </div>
-    <br><br><br>
-
-
-    <div x-data="{ selected: false}">
-        <span x-bind:class="{ 'bold' : selected }">
-            Am I Bold?
-        </span>
-
-        <button x-on:click="selected=true">Make It Bold</button>
-    </div>
-
-    <br><br><br>
-
-    <form x-data="{ name: '' }" x-on:submit.prevent="alert(`Hey ${name}`)">
-        <input type="text" x-model="name">
-
-        <button type="submit" x-bind:disabled="name === ''">Lets Go</button>
-
-    </form>
-
-    <br><br><br>
-
-
-    <div x-data="{ progress: 0 }">
-        <progress max="100" x-bind:value="progress">
-            <span x-text="${progress}%"></span>
-        </progress>
-
-        <button x-on:click="progress = progress + 5">Increment</button>
-    </div> -->
-
-
-
-
-    <div
-     x-data="{
-         selected: [],
-        people: [
-            { id:1, name:'Alex' },
-            { id:2, name:'Billy' },
-            { id:3, name:'Mabel' },
-        ]
-    }"
-    >
-    <span x-text="selected"></span>
-    <template x-for="person in people">
-        <div>
-            <input 
-            type="checkbox" 
-            x-bind:value="person.id"
-            x-model="selected"
-            > 
-            <span x-text="person.name"></span>
-        </div>
-    </template>
-
+    <button x-on:click="increment">Increment</button>
     </div>
 
 </body>
