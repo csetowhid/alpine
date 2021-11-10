@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Document</title>
+    
+</head>
+<body>
+    <!-- <div x-data="{ numbers: [1,2,3,4,5] }">
+        <template x-for="number in numbers">
+            <span x-text="number"></span>
+        </template>
+    </div> -->
+
+
+    <div x-data="{ fruits: ['Apple','Orange', 'Banana','Grapes','Guava'] }">
+        <ol>
+        <template x-for="fruit in fruits">
+            <li x-text="fruit"></li>
+        </template>
+        </ol>
+    </div>
+
+    <div x-data="{ fruits: ['Apple','Orange', 'Banana','Grapes','Guava'] }">
+        <ol>
+        <template x-for="fruit, index in fruits">
+            <div>
+                <span x-text="index + 1"></span>: <span x-text="fruit"></span>
+            </div>
+            
+        </template>
+        </ol>
+    </div>
+
+
+    <div x-data="{
+        people:[
+        { id:1, name: 'Alex', points:1 },
+        { id:2, name: 'Billy', points:40 },
+        { id:3, name: 'Mabel', points:3 },
+        ],
+        get peopleSortedByPoints () {
+            return this.people.sort((a,b) => a.points - b.points)
+        },
+        incrementPoints(id){
+            this.people.find((p) => p.id === id).points++
+        }
+    }">
+
+    <!-- <template x-for="person in people">
+        <div>
+            <span x-text="person.name"></span> <span x-text="person.points"></span> Points
+
+            <button x-on:click="incrementPoints(person.id)">Increment</button>
+        </div>
+    </template> -->
+
+    <template x-for="person in peopleSortedByPoints" :key="person.id">
+        <div>
+            <span x-text="person.name"></span> <span x-text="person.points"></span> Points
+
+            <button x-on:click="incrementPoints(person.id)">Increment</button>
+        </div>
+    </template>
+
+    </div>
+
+</body>
+</html>
