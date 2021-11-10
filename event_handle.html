@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Document</title>
+    
+</head>
+<body>
+    <!-- <form x-data x-on:submit="console.log('submitted')">
+        <textarea cols="30" rows="10" x-data x-on:keyup="console.log($event)"></textarea>
+
+        <textarea cols="30" rows="10" x-data x-on:keyup="if ($event.code === 'Enter') { console.log('submit')}"></textarea>
+    </form> -->
+
+    <form x-data x-on:submit.prevent="console.log('submitted')">
+
+        <textarea cols="30" rows="10" x-data x-on:keyup.enter="console.log('abc')"></textarea>
+    </form>
+</body>
+</html>
